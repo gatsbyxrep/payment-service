@@ -18,7 +18,7 @@ async def webhook(request: Request):
     ):
         return json({"error": "Invalid signature"}, status=403)
 
-    use_case = request.payment_use_case
+    use_case = request.ctx.payment_use_case
     
     try:
         result = await use_case.process_payment(data)
